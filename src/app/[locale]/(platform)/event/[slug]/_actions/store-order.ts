@@ -236,7 +236,7 @@ async function ensureSufficientSellShares(maker: string, tokenId: string, makerA
 }
 
 export async function storeOrderAction(payload: StoreOrderInput) {
-  const user = await UserRepository.getCurrentUser()
+  const user = await UserRepository.getCurrentUser({ minimal: true })
   if (!user) {
     return { error: 'Unauthenticated.' }
   }

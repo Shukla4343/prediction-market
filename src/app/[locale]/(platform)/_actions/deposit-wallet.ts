@@ -375,7 +375,7 @@ export async function updateOnboardingUsernameAction(input: {
   username: string
   termsAccepted: boolean
 }) {
-  const user = await UserRepository.getCurrentUser({ disableCookieCache: true })
+  const user = await UserRepository.getCurrentUser({ disableCookieCache: true, minimal: true })
   if (!user) {
     return { error: 'Unauthenticated.', data: null }
   }
@@ -500,7 +500,7 @@ export async function updateOnboardingEmailAction(input: {
 export async function enableDepositWalletTradingAction(
   input: z.input<typeof TradingAuthSignatureSchema>,
 ): Promise<EnableDepositWalletTradingActionResult> {
-  const user = await UserRepository.getCurrentUser({ disableCookieCache: true })
+  const user = await UserRepository.getCurrentUser({ disableCookieCache: true, minimal: true })
   if (!user) {
     return { error: 'Unauthenticated.', data: null }
   }

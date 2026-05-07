@@ -6,7 +6,7 @@ import { isDepositWalletDeployed } from '@/lib/deposit-wallet'
 import { db } from '@/lib/drizzle'
 
 export async function GET() {
-  const user = await UserRepository.getCurrentUser({ disableCookieCache: true })
+  const user = await UserRepository.getCurrentUser({ disableCookieCache: true, minimal: true })
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthenticated' }, { status: 401 })
